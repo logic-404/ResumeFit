@@ -1,0 +1,20 @@
+# Expected ranges per (resume, JD) pair.
+# After a baseline run, freeze numbers here. CI fails on regression.
+
+ml_engineer_strong_fit:
+  resume_file: golden/resume_ml.tex
+  jd_file: golden/jd_ml_atlassian.txt
+  must_match_skills: ["Python", "RAG"]
+  forbid_match_skills: []
+  match_score_min: 0.65
+  match_score_max: 0.95
+  forbid_fabricated_entities: true
+  cover_letter_keyword_min: 5
+
+mismatch_low_fit:
+  resume_file: golden/resume_ml.tex
+  jd_file: golden/jd_devops_lead.txt
+  must_match_skills: []
+  match_score_min: 0.0
+  match_score_max: 0.55
+  forbid_fabricated_entities: true

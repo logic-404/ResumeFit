@@ -1,0 +1,84 @@
+{
+  "python": {
+    "canonical": "Python",
+    "family": "Programming Language",
+    "related": ["FastAPI", "Django", "Flask", "Pandas", "NumPy", "PyTorch", "TensorFlow"]
+  },
+  "kubernetes": {
+    "canonical": "Kubernetes",
+    "family": "Container Orchestration",
+    "related": ["Docker", "Helm", "Istio", "AWS EKS", "GKE"]
+  },
+  "k8s": { "alias_of": "kubernetes" },
+  "docker": {
+    "canonical": "Docker",
+    "family": "Containers",
+    "related": ["Kubernetes", "Podman", "Docker Compose"]
+  },
+  "react": {
+    "canonical": "React",
+    "family": "Frontend Framework",
+    "related": ["Next.js", "Redux", "TanStack Query", "Zustand", "Vite"]
+  },
+  "rag": {
+    "canonical": "Retrieval-Augmented Generation",
+    "family": "LLM Application",
+    "related": ["Embeddings", "Vector Database", "LangChain", "LlamaIndex", "Semantic Search"]
+  },
+  "langchain": {
+    "canonical": "LangChain",
+    "family": "LLM Framework",
+    "related": ["LangGraph", "LangSmith", "RAG", "Prompt Engineering"]
+  },
+  "langgraph": {
+    "canonical": "LangGraph",
+    "family": "LLM Framework",
+    "related": ["LangChain", "Multi-agent Systems", "Stateful Agents"]
+  },
+  "pytorch": {
+    "canonical": "PyTorch",
+    "family": "Deep Learning Framework",
+    "related": ["TensorFlow", "JAX", "Hugging Face", "CUDA"]
+  },
+  "tensorflow": {
+    "canonical": "TensorFlow",
+    "family": "Deep Learning Framework",
+    "related": ["Keras", "PyTorch", "JAX"]
+  },
+  "aws": {
+    "canonical": "AWS",
+    "family": "Cloud Provider",
+    "related": ["EC2", "S3", "Lambda", "ECS", "EKS", "SageMaker"]
+  },
+  "gcp": {
+    "canonical": "Google Cloud Platform",
+    "family": "Cloud Provider",
+    "related": ["BigQuery", "GKE", "Cloud Run", "Vertex AI"]
+  },
+  "postgres": { "alias_of": "postgresql" },
+  "postgresql": {
+    "canonical": "PostgreSQL",
+    "family": "Database",
+    "related": ["pgvector", "TimescaleDB", "MySQL", "SQLAlchemy"]
+  },
+  "mlflow": {
+    "canonical": "MLflow",
+    "family": "ML Tooling",
+    "related": ["Weights & Biases", "DVC", "Kubeflow"]
+  },
+  "terraform": {
+    "canonical": "Terraform",
+    "family": "Infrastructure as Code",
+    "related": ["Pulumi", "AWS CDK", "Ansible"]
+  },
+  "fastapi": {
+    "canonical": "FastAPI",
+    "family": "Web Framework",
+    "related": ["Pydantic", "Starlette", "Flask", "Django"]
+  },
+  "sql": {
+    "canonical": "SQL",
+    "family": "Query Language",
+    "related": ["PostgreSQL", "MySQL", "BigQuery", "Snowflake"]
+  }
+}

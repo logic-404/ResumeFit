@@ -1,0 +1,25 @@
+Senior ML Engineer — Atlassian, AI Platform team
+
+About the role
+We're looking for a Senior ML Engineer to join Atlassian's AI Platform team. You'll design and ship retrieval-augmented generation (RAG) systems that power features used by millions of teams worldwide. You'll own production ML pipelines end-to-end: data ingestion, model serving, evaluation, and observability.
+
+What you'll do
+- Build and operate RAG pipelines on production-grade infrastructure
+- Design vector-search and reranking strategies that scale
+- Partner with product engineers to ship LLM features
+- Drive MLOps practices: experiment tracking, model registry, CI/CD for ML
+
+Required
+- 4+ years of professional software engineering experience, with at least 2 in ML
+- Strong Python; experience with PyTorch or TensorFlow
+- Direct experience building RAG systems or retrieval pipelines
+- Familiarity with cloud (AWS, GCP, or Azure)
+
+Nice to have
+- LangChain / LangGraph experience
+- Kubernetes
+- MLflow or similar experiment tracking
+- Prior work on agentic systems
+
+Benefits
+- Equity, remote-flexible, learning budget

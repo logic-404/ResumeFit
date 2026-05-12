@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06070A" />
+    <title>ResumeFit — AI résumé-tailoring engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+      <span class="grid-overlay"></span>
+      <span class="noise"></span>
+      <span class="spotlight" id="spotlight"></span>
+    </div>
+    <div id="root"></div>
+    <script>
+      // cursor spotlight
+      const sp = document.getElementById("spotlight");
+      let tx = 50, ty = 50, cx = 50, cy = 50;
+      window.addEventListener("pointermove", (e) => {
+        tx = (e.clientX / window.innerWidth) * 100;
+        ty = (e.clientY / window.innerHeight) * 100;
+      });
+      function tick() {
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        if (sp) sp.style.background =
+          `radial-gradient(600px circle at ${cx}% ${cy}%, rgba(94,234,212,0.10), transparent 60%)`;
+        requestAnimationFrame(tick);
+      }
+      tick();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

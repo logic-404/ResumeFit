@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+.venv/
+venv/
+ENV/
+env/
+
+# Secrets and local env (keep *.example tracked)
+.env
+.env.*
+!**/.env.example
+
+*.sqlite3
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Node / Vite / TypeScript
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Local vector store (default CHROMA_PATH)
+chroma_db/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local IDE / agent config (not application code)
+.claude/
+.cursor/
+
+# Direnv (often machine-specific)
+.envrc

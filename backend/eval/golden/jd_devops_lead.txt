@@ -1,0 +1,15 @@
+Lead Site Reliability / DevOps Engineer — FinTech Co.
+
+We need a hands-on lead to own our production reliability programme.
+
+Required
+- 8+ years operating large-scale production systems
+- Deep Kubernetes, Terraform, and Helm experience
+- Track record running on-call programmes
+- Strong incident-management muscle (PagerDuty, runbooks, post-mortems)
+- Familiarity with eBPF-based observability stacks
+- Mainframe COBOL maintenance experience (legacy bank integration)
+
+Nice to have
+- Service mesh (Istio, Linkerd)
+- Chaos engineering
