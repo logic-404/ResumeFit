@@ -26,7 +26,7 @@ class Application(Base):
     company_name: Mapped[str] = mapped_column(String(255), nullable=False)
     role_title: Mapped[str] = mapped_column(String(255), nullable=False)
     location: Mapped[str | None] = mapped_column(String(255))
-    salary_range: Mapped[str | None] = mapped_column(String(100))
+    salary_range: Mapped[str | None] = mapped_column(Text)
     job_url: Mapped[str | None] = mapped_column(String(1000))
 
     raw_jd_text: Mapped[str] = mapped_column(Text, nullable=False)

@@ -8,11 +8,12 @@ Best practices applied (web-researched, cross-referenced with Harvard
 career-center, Google Docs default, and modern recruiter guidance):
 
 - Single column, no layout columns/grids — ATS parsers index L→R T→B.
-- 0.6in vertical / 0.7in horizontal margins (industry norm 0.5–1in).
+- 0.5in vertical / 0.65in horizontal margins (industry norm 0.5–1in).
 - Body 10.5pt, name 22pt, section heads 10.5pt small-caps with hairline rule.
 - **Dates rendered on a SECOND line below role/school**, italic + muted.
   Avoids the collision problem of float-right dates and reads cleaner.
-- Tight bullet spacing (2pt) for density without crowding; 1.4 line-height.
+- Tight bullet spacing (1.5pt) for density without crowding; 1.15 line-height
+  (resume norm — 1.4 inflated rendered output ~1 full page vs source).
 - Helvetica family — most consistent across PDF readers and ATS engines.
 - Color used sparingly: deep slate body, near-black headings; muted grey for
   meta/dates/location. Survives black-and-white printing.
@@ -47,12 +48,12 @@ from app.schemas.pipeline import (
 # CSS
 # ──────────────────────────────────────────────────────────
 STYLED_CSS = """
-@page { size: Letter; margin: 0.6in 0.7in; }
+@page { size: Letter; margin: 0.5in 0.65in; }
 body {
   font-family: "Helvetica", "Arial", sans-serif;
   font-size: 10.5pt;
   color: #1f2937;
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 /* ── Header ──────────────────────────────────────────── */
@@ -75,7 +76,7 @@ h1.name {
   text-align: center;
   font-size: 9.5pt;
   color: #475569;
-  margin: 0 0 14pt 0;
+  margin: 0 0 10pt 0;
 }
 .contact a { color: #475569; text-decoration: none; }
 
@@ -87,14 +88,14 @@ h2.section {
   letter-spacing: 0.6pt;
   color: #0f172a;
   border-bottom: 1pt solid #0f172a;
-  margin: 12pt 0 6pt 0;
+  margin: 9pt 0 4pt 0;
   padding-bottom: 1pt;
   /* never leave a section heading alone at the foot of a page */
   -pdf-keep-with-next: true;
 }
 
 /* ── Item rows ───────────────────────────────────────── */
-.item { margin: 6pt 0 4pt 0; }
+.item { margin: 4pt 0 3pt 0; }
 .item-title {
   font-weight: bold;
   font-size: 10.8pt;
@@ -113,11 +114,11 @@ h2.section {
 
 /* ── Bullets ─────────────────────────────────────────── */
 ul.bullets {
-  margin: 2pt 0 4pt 16pt;
+  margin: 2pt 0 3pt 16pt;
   padding: 0;
 }
 ul.bullets li {
-  margin-bottom: 2pt;
+  margin-bottom: 1.5pt;
   padding-left: 2pt;
 }
 
@@ -145,6 +146,7 @@ ul.bullets li {
   font-size: 9.5pt;
   color: #475569;
 }
+.project-link a { color: #475569; text-decoration: none; }
 """
 
 
@@ -153,6 +155,18 @@ ul.bullets li {
 # ──────────────────────────────────────────────────────────
 def _e(s: str | None) -> str:
     return html.escape(s) if s else ""
+
+
+def _url(s: str | None) -> str:
+    """Absolute URL for href. Bare domains (linkedin.com/in/x) get
+    https:// — xhtml2pdf treats a schemeless href as relative, so the
+    link is not clickable without this."""
+    if not s:
+        return ""
+    u = s.strip()
+    if not re.match(r"^[a-zA-Z][a-zA-Z0-9+.\-]*:", u):
+        u = "https://" + u
+    return html.escape(u, quote=True)
 
 
 def _date_range(start: str | None, end: str | None) -> str:
@@ -192,11 +206,11 @@ def _render_contact(c: ContactInfo) -> str:
     if c.email:
         parts.append(f'<a href="mailto:{_e(c.email)}">{_e(c.email)}</a>')
     if c.linkedin:
-        parts.append(f'<a href="{_e(c.linkedin)}">{_e(c.linkedin)}</a>')
+        parts.append(f'<a href="{_url(c.linkedin)}">{_e(c.linkedin)}</a>')
     if c.github:
-        parts.append(f'<a href="{_e(c.github)}">{_e(c.github)}</a>')
+        parts.append(f'<a href="{_url(c.github)}">{_e(c.github)}</a>')
     if c.website:
-        parts.append(f'<a href="{_e(c.website)}">{_e(c.website)}</a>')
+        parts.append(f'<a href="{_url(c.website)}">{_e(c.website)}</a>')
     if c.location:
         parts.append(_e(c.location))
     if not parts:
@@ -289,7 +303,8 @@ def _render_projects(items: list[ProjectItem]) -> str:
         title = _e(it.name)
         if it.link:
             title += (
-                f' <span class="project-link">&middot; {_e(it.link)}</span>'
+                ' <span class="project-link">&middot; '
+                f'<a href="{_url(it.link)}">{_e(it.link)}</a></span>'
             )
         stack = (
             f'<div class="project-stack">{_e(it.description)}</div>'

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Annotated, Any, Literal
 
-from pydantic import AliasChoices, BaseModel, BeforeValidator, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, BeforeValidator, ConfigDict, Field, field_validator
 
 
 def _coerce_bullets(v: Any) -> Any:
@@ -178,6 +178,13 @@ class StyledResume(BaseModel):
     headline: str | None = None  # short tagline e.g. "Senior Data Engineer"
     contact: ContactInfo = Field(default_factory=ContactInfo)
     summary: str | None = None
+
+    @field_validator("summary", mode="before")
+    @classmethod
+    def _coerce_summary(cls, v: Any) -> Any:
+        if isinstance(v, list):
+            return " ".join(str(s) for s in v if s)
+        return v
     experience: list[ExperienceItem] = Field(default_factory=list)
     education: list[EducationItem] = Field(default_factory=list)
     skills: list[SkillGroup] = Field(default_factory=list)

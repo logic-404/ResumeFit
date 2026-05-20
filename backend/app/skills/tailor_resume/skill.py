@@ -113,7 +113,8 @@ class TailorResumeSkill(Skill):
         # via Pydantic in all langchain versions — use JSON-mode + adapter.
         chain = self.prompt | self.llm().bind(response_format={"type": "json_object"})
         msg = await chain.ainvoke({**inputs, "repair_note": repair_note})
-        data = json.loads(msg.content if hasattr(msg, "content") else str(msg))
+        raw = msg.content if hasattr(msg, "content") else str(msg)
+        data, _ = json.JSONDecoder().raw_decode(raw.strip())
         # Backstop: LLM sometimes omits the `format` discriminator. Infer
         # from source_format so validation succeeds.
         if isinstance(data, dict) and "format" not in data:

@@ -42,12 +42,12 @@ _PDFLATEX_TIMEOUT = 60
 # pdf_source → HTML → PDF
 # ──────────────────────────────────────────────────────────
 _RESUME_CSS = """
-@page { size: Letter; margin: 0.55in 0.65in; }
+@page { size: Letter; margin: 0.5in 0.65in; }
 body {
   font-family: "Helvetica", "Arial", sans-serif;
   font-size: 10.5pt;
   color: #1f2937;
-  line-height: 1.4;
+  line-height: 1.15;
 }
 /* Name */
 h1 {
@@ -71,7 +71,7 @@ p.contact {
 h2 {
   font-size: 10.5pt;
   font-weight: bold;
-  margin: 12pt 0 4pt 0;
+  margin: 9pt 0 4pt 0;
   padding-bottom: 2pt;
   border-bottom: 1pt solid #0f172a;
   text-transform: uppercase;
@@ -86,8 +86,8 @@ h3 {
   color: #0f172a;
 }
 p { margin: 2pt 0; }
-ul { margin: 3pt 0 4pt 16pt; padding: 0; }
-li { margin: 0 0 2.5pt 0; padding-left: 2pt; }
+ul { margin: 2pt 0 3pt 16pt; padding: 0; }
+li { margin: 0 0 1.5pt 0; padding-left: 2pt; }
 strong, b { color: #0f172a; font-weight: bold; }
 em, i { color: #475569; font-style: italic; }
 hr { border: none; border-top: 0.5pt solid #cbd5e1; margin: 6pt 0; }

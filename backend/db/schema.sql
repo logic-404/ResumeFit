@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS applications (
     company_name    VARCHAR(255) NOT NULL,
     role_title      VARCHAR(255) NOT NULL,
     location        VARCHAR(255),
-    salary_range    VARCHAR(100),
+    salary_range    TEXT,
     job_url         VARCHAR(1000),
 
     raw_jd_text     TEXT NOT NULL,
